@@ -1,7 +1,8 @@
 package com.noxcrew.noxesium;
 
-import com.noxcrew.noxesium.rule.ServerRule;
-import com.noxcrew.noxesium.skull.CustomSkullFont;
+import com.noxcrew.noxesium.feature.music.MccMusicManager;
+import com.noxcrew.noxesium.feature.rule.ServerRule;
+import com.noxcrew.noxesium.feature.skull.CustomSkullFont;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayConnectionEvents;
@@ -31,6 +32,12 @@ public class NoxesiumMod implements ClientModInitializer {
 
     public static final String BUKKIT_COMPOUND_ID = "PublicBukkitValues";
     public static final String IMMOVABLE_TAG = "noxesium:immovable";
+
+    private final MccMusicManager musicManager;
+
+    public NoxesiumMod() {
+        musicManager = new MccMusicManager();
+    }
 
     @Override
     public void onInitializeClient() {
@@ -77,6 +84,13 @@ public class NoxesiumMod implements ClientModInitializer {
             ServerRule.clearAll();
             CustomSkullFont.clear();
         });
+    }
+
+    /**
+     * Returns the background music manager.
+     */
+    public MccMusicManager getMusicManager() {
+        return musicManager;
     }
 
     /**
