@@ -34,7 +34,7 @@ dependencies {
     // modCompileOnly("com.github.IrisShaders:Iris:${project.iris}") {
     //     transitive = false
     // }
-    modLocalRuntime(modCompileOnly("com.terraformersmc:modmenu:${project.modmenu}"))
+    // modLocalRuntime(modCompileOnly("com.terraformersmc:modmenu:${project.modmenu}"))
 }
 
 processResources {
