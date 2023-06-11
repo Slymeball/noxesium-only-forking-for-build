@@ -64,7 +64,7 @@ public class NoxesiumMod implements ClientModInitializer {
                     ServerRule.clearAll();
                 }
                 if (hasFlag(command, 1)) {
-                    CustomSkullFont.clear();
+                    CustomSkullFont.resetCaches();
                 }
             });
 
@@ -76,7 +76,11 @@ public class NoxesiumMod implements ClientModInitializer {
         ClientPlayConnectionEvents.DISCONNECT.register((ignored1, ignored2) -> {
             // Clear all stored server rules
             ServerRule.clearAll();
-            CustomSkullFont.clear();
+
+            // Clear out all font claims as we can now safely assume
+            // we don't need the old ones anymore and there won't be
+            // any components that persist between before/after this point
+            CustomSkullFont.clearCaches();
         });
     }
 
