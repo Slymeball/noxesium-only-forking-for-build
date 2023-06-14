@@ -42,3 +42,10 @@ jobs:
         with:
           files: build/libs/noxesium-+([0-9]).+([0-9]).+([0-9a-zA-Z]).jar
           draft: true
+          
+      # Added by me for getting the build's artifacts. Why wasn't this here before?
+      - name: capture build artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: Artifacts
+          path: build/libs/
