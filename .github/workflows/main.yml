@@ -36,12 +36,6 @@ jobs:
         uses: gradle/gradle-build-action@v2.2.2
         with:
           arguments: build
-        
-      - name: Create Draft Release
-        uses: softprops/action-gh-release@v1
-        with:
-          files: build/libs/noxesium-+([0-9]).+([0-9]).+([0-9a-zA-Z]).jar
-          draft: true
           
       # Added by me for getting the build's artifacts. Why wasn't this here before?
       - name: capture build artifacts
@@ -49,3 +43,9 @@ jobs:
         with:
           name: Artifacts
           path: build/libs/
+        
+      - name: Create Draft Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: build/libs/noxesium-+([0-9]).+([0-9]).+([0-9a-zA-Z]).jar
+          draft: true
